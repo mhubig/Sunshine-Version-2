@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
-        ArrayAdapter<String> mForcastAdapter;
+        ArrayAdapter<String> mForecastAdapter;
 
         public PlaceholderFragment() {
         }
@@ -79,14 +79,14 @@ public class MainActivity extends ActionBarActivity {
             List<String> weekForecast = new ArrayList<>(
                     Arrays.asList(forecastArray));
 
-            mForcastAdapter = new ArrayAdapter<>(
+            mForecastAdapter = new ArrayAdapter<>(
                     getActivity(),
-                    R.layout.list_item_forcast,
-                    R.id.list_item_forcast_textview,
+                    R.layout.list_item_forecast,
+                    R.id.list_item_forecast_textview,
                     weekForecast);
 
-            ListView mListView = (ListView) rootView.findViewById(R.id.listview_forcast);
-            mListView.setAdapter(mForcastAdapter);
+            ListView mListView = (ListView) rootView.findViewById(R.id.listview_forecast);
+            mListView.setAdapter(mForecastAdapter);
 
             return rootView;
         }
