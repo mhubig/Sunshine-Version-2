@@ -1,13 +1,19 @@
 package com.example.android.sunshine.app;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -50,6 +56,8 @@ public class MainActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
+        ArrayAdapter<String> mForcastAdapter;
+
         public PlaceholderFragment() {
         }
 
@@ -57,6 +65,29 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            String[] forecastArray = {
+                    "Today - Sunny - 83/63",
+                    "Tomorrow - Sunny - 83/63",
+                    "Sunday - Sunny - 83/63",
+                    "Monday - Sunny - 83/63",
+                    "Tuesday - Sunny - 83/63",
+                    "Wednesday - Sunny - 83/63",
+                    "Thursday - Sunny - 83/63"
+            };
+
+            List<String> weekForecast = new ArrayList<>(
+                    Arrays.asList(forecastArray));
+
+            mForcastAdapter = new ArrayAdapter<>(
+                    getActivity(),
+                    R.layout.list_item_forcast,
+                    R.id.list_item_forcast_textview,
+                    weekForecast);
+
+            ListView mListView = (ListView) rootView.findViewById(R.id.listview_forcast);
+            mListView.setAdapter(mForcastAdapter);
+
             return rootView;
         }
     }
